@@ -2,14 +2,11 @@ local function getComputerInfo()
     local info = {}
 
     info.computerName = os.getComputerLabel() or "Unnamed Computer"
-    info.uptime = os.getUptime()
-    info.freeMemory = os.getFreeMemory()
-    info.totalMemory = os.getTotalMemory()
 
-    local drive = "disk"  -- Replace with your actual drive name
+    local drive = ""  -- Replace with your actual drive name
     if fs.exists(drive) then
         info.diskFree = fs.getFreeSpace(drive)
-        info.diskTotal = fs.getTotalSpace(drive)
+        info.diskTotal = fs.getCapacity(drive)
     end
 
     local redstone_side = "back" -- Replace with the actual side your redstone is on
